@@ -4,7 +4,6 @@ import {
   ListItem,
   ListIcon,
   Divider,
-  Center,
   LinkBox,
   LinkOverlay,
 } from '@chakra-ui/layout';
@@ -17,6 +16,7 @@ import {
 } from 'react-icons/md';
 import NextImage from 'next/image';
 import NextLink from 'next/link';
+import { usePlaylist } from '../lib/hooks';
 
 const navMenu = [
   {
@@ -49,11 +49,11 @@ const musicMenu = [
   },
 ];
 
-const playlists = new Array(30)
-  .fill(1)
-  .map((_, index) => `Playlist ${index + 1}`);
 
 const Sidebar = () => {
+
+  const {playlists} = usePlaylist();
+
   return (
     <Box
       width="100%"
@@ -110,11 +110,11 @@ const Sidebar = () => {
         <Divider color="gray.800" marginTop="10px" />
         <Box height="66%" overflowY="auto" paddingY="20px">
           <List spacing={2}>
-            {playlists.map((item) => (
-              <ListItem paddingX="20px" key={item}>
+            {playlists.map((playlist) => (
+              <ListItem paddingX="20px" key={playlist.id}>
                 <LinkBox>
                   <NextLink href="/" passHref>
-                    <LinkOverlay>{item}</LinkOverlay>
+                    <LinkOverlay>{playlist.name}</LinkOverlay>
                   </NextLink>
                 </LinkBox>
               </ListItem>
