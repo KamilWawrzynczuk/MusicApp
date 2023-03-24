@@ -23,7 +23,7 @@ const GradientLayout = ({
             boxShadow="2xl"
             src={image}
             borderRadius={roundImage ? '100%' : '3px'}
-          ></Image>
+          />
         </Box>
         <Box padding="20px" lineHeight="40px" color='white'>
           <Text fontSize='x-small' fontWeight="bold" casing="unset">
@@ -35,6 +35,9 @@ const GradientLayout = ({
           </Text>
         </Box>
       </Flex>
+      <Box padding='40px'>
+        {children}
+      </Box>
     </Box>
   );
 };
